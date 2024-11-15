@@ -53,8 +53,8 @@ nav ul li a {
 }
 @font-face {
   font-family: 'PowerChord';
-  src: url('Fonts/powerchord.woff') format('woff'),
-       url('Fonts/powerchord.ttf') format('truetype');
+  src: url('PowerChord.woff') format('woff'),
+       url('PowerChord.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
