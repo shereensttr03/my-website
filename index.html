@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name ="viewpoint" content = "width=device-width, initial-scale=1.0">
+    <title> HOME </title>
+    <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <style>
+      canvas {
+        display: block;
+        position: absolute;
+        z-index: -1;
+      }
+    </style>
+
+  </head>
+  <body>
+    <header>
+      <h1>SHEREEN SATTAR</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html" class="nav-button">Home</a></li>
+          <li><a href="Projects.html" class="nav-button">Projects</a></li>
+          <li><a href="Experience.html" class="nav-button">Experiences</a></li>
+          <li><a href="Contact.html" class="nav-button">Contacts</a></li>
+          <li><a href="#" class="nav-button">Blog</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div id="canvasContainer"></div>
+    <script>
+      let img1, img2;
+      let x = 0;
+      let img1Width = 200, img1Height = 400;
+      let img2Width = 300, img2Height = 430;
+      let speed = 3.0;
+      let isHovered = false;
+
+      function preload() {
+        img1 = loadImage ('Animation3.png');
+        img2 = loadImage ('Animation4.png');
+      }
+
+      function setup() {
+        let canvas=createCanvas(windowWidth, windowHeight);
+        canvas.parent ('canvasContainer');
+        x = -img1Width;
+      } 
+
+      function draw() {
+        background(0);
+
+        isHovered = mouseX > x && mouseX < x + img1Width && mouseY > height / 2 && mouseY < height / 2 + img1Height;
+
+        if (isHovered) {
+          image(img2, x, height / 2, img2Width, img2Height);
+        } else { 
+          image(img1, x, height / 2, img1Width, img1Height);
+          x += speed;
+        }
+
+        if (x>width) {
+          x = -img1Width;       
+        }
+      }
+      function windowResized() {
+        resizeCanvas(windowWidth, windowHeight);
+      }
+    </script>
+
+    
+    <div class="box"> 
+      <p style= "font-size: 320px;"> </style> <span style ="color:#EFCCFF; -webkit-text-stroke: 2px black;">  WELCOME </span> </p>
+      <p style = "font-size: 300px;"> TO MY </style> <span style ="color:#EFCCFF;-webkit-text-stroke: 2px black;"> PAGE </span> </p>
+    </div>
+    <div id ="myCanvasContainer"></div>
+
+      <p class="introduction"; style = "font-size: 350px;"> ME: </p>
+
+    
+    <div class="container">
+      <div class="intro backbox1"> </div>
+      <div class="intro topbox1"> 
+        <p style = "font-size: 20px;"> Hello! My name is Shereen Sattar and I’m a fourth year student majoring in Mathematics and computer science with a concentration IN ALGORITHMS AND THEORY at University of Illinois Chicago. MY CURRENT GOAL IS TO COMPLETE MY BACHELORS DEGREE AND PURSUE A MASTERS IN COMPUTER SCIENCE.</p>
+        <p style = "font-size: 20px;"> IN MY FREE TIME I ENJOY ASTRONOMY, WEIGHT-LIFTING, PILATES, PAINTING, READING, AND TRAVELING </p>
+      </div>
+      <div class="intro headerbox1">
+        <p style = "font-size: 15px;"> - [] X </p>
+      </div>
+      <img src = "ME.jpg" alt="Picture of me" class="side-image">
+    </div>
+
+    <div class="box3"> 
+      <p style= "font-size: 10px;"> </style> Seattle, Washington (March, 2024) </p>
+    </div>
+
+    <div class="box1"> 
+      <p style= "font-size: 130px;"> </style> WHY I LOVE MY MAJOR </p>
+    </div>
+  
+
+    <div class="container1">
+      <div class="intro1 backbox2"> </div>
+      <div class="intro1 topbox2"> 
+        <p style = "font-size:20px;"> As a mathematics and computer science major, I have developed a deep-seated passion for these fields and a strong desire to contribute meaningfully to their advancement.</p>
+        <p style = "font-size:20px;"> My academic journey has been fueled by a genuine love for mathematics and computer science. The beauty of solving complex problems and the endless possibilities of applying mathematical concepts and computational skills to real-world issues have always fascinated me.</p>
+      </div>
+      <div class="intro1 headerbox2">
+        <p style = "font-size: 15px;"> - [] X </p>
+      </div>
+      <img src = "grouppic.JPG" alt="Group picture of me" class="side-image2">
+    </div>
+  
+    <div class="box2"> 
+      <p style= "font-size: 10px;"> </style> Astronomy Club at UIC at Ignite UIC (April, 2024) </p>
+    </div>
+
+   <footer>
+      <nav class="footer-links">
+        <a href="https://github.com/shereensttr03" target="_blank"> Github </a>
+        <a href="https://www.linkedin.com/in/shereen-sattar-5b930b223/" target="_blank"> LinkedIn </a>
+      </nav>
+
+   </footer>
+</body>
+</html>
+
+
