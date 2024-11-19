@@ -1,0 +1,176 @@
+#include <iostream>
+#include <vector>
+#include <string>
+using namespace std;
+
+class Node {
+public:
+    string data;    // Data stored in the node
+    int length;     // Length of the string data
+    Node* next;     // Pointer to the next node in the list
+
+    // initialize the node with data
+    Node(const string& d) : data(d), length(d.length()), next(nullptr) {}
+};
+
+class List {
+private:
+    Node* head;     // Pointer to the first node in the list
+    Node* tail;     // Pointer to the last node in the list
+
+public:
+    List() : head(nullptr), tail(nullptr) {}    // initialize an empty list
+
+    // Function to generate a list from a vector of strings
+    void generate_list(const vector<string>& words) {
+        for (const auto& word : words) {
+            Node* newNode = new Node(word); // Create a new node with the current word
+            if (!head) {    // If the list is empty
+                head = tail = newNode;  // Set the new node as both head and tail
+            } else {
+                tail->next = newNode;   // Append the new node to the end of the list
+                tail = newNode;         // Update the tail pointer to the new node
+            }
+        }
+    }
+
+    // Function to print the content of the list
+    void print() const {
+        Node* current = head;
+        while (current) {   // Traverse the list until reaching the end
+            cout << "[" << current->data << ", " << current->length << "]" << endl; // Print the data and length of the current node
+            current = current->next;    // Move to the next node
+        }
+    }
+
+    // Function to find the longest string in the list
+    string longest_string() const {
+        if (!head) return "";   // If the list is empty, return an empty string
+        string longest = head->data;    //longest string as the data of the first node
+        int maxLength = head->length;   // maximum length as the length of the first node
+        Node* current = head->next;     // Start from the second node
+        while (current) {   // Traverse the list
+            if (current->length > maxLength) { // If the length of the current node is < the maximum length
+                maxLength = current->length;    // Update the maximum length
+                longest = current->data;        // Update the longest string
+            }
+            current = current->next;    // Move to the next node
+        }
+        return longest; // Return the longest string found
+    }
+
+    // Function to calculate the average word length in the list
+    double average_word_length() const {
+        if (!head) return 0;    // If the list is empty, return 0
+        double totalLength = 0; //  total length of all words
+        int count = 0;          // the count of words
+        Node* current = head;   // Start from the first node
+        while (current) {       // Traverse the list
+            totalLength += current->length; // Add the length of the current word to the total length
+            count++;            // Increment the count of words
+            current = current->next;    // Move to the next node
+        }
+        return totalLength / count; // Return the average word length
+    }
+
+    // Function to build a sentence from the words in the list
+    string build_sentence() const {
+        string sentence;    // Initialize an empty string for the sentence
+        Node* current = head;   // Start from the first node
+        while (current) {       // Traverse the list
+            sentence += current->data + " ";    // Append the data of the current node to the sentence with a space
+            current = current->next;    // Move to the next node
+        }
+        return sentence;    // Return the built sentence
+    }
+
+    // Function to prioritize the list based on the length of the words
+    void prioritize_list() {
+        if (!head || head == tail) return; // If the list is empty or has only one node, no need to prioritize
+
+        Node* longest = head;   // Initialize the longest word as the first node
+        Node* shortest = head;  // Initialize the shortest word as the first node
+        Node* current = head->next; // Start from the second node
+
+        // Traverse the list to find the longest and shortest words
+        while (current) {
+            if (current->length > longest->length)
+                longest = current;   // Update the longest word
+            if (current->length < shortest->length)
+                shortest = current;  // Update the shortest word
+            current = current->next;    // Move to the next node
+        }
+
+        // Move the longest word to the front of the list
+        if (longest != head) {
+            Node* prevLongest = nullptr;
+            current = head;
+            while (current->next != longest) {
+                current = current->next;
+            }
+            prevLongest = current;
+
+            prevLongest->next = longest->next;
+            longest->next = head;
+            head = longest;
+        }
+
+        // Move the shortest word to the end of the list
+        if (shortest != head) {
+            Node* prevShortest = nullptr;
+            current = head;
+            while (current->next != shortest) {
+                current = current->next;
+            }
+            prevShortest = current;
+
+            prevShortest->next = shortest->next;
+            current->next = shortest;
+            shortest->next = nullptr;
+        }
+    }
+
+    // Function to delete all occurrences of a word from the list
+    void delete_string(const string& s) {
+        Node* current = head;
+        Node* prev = nullptr;
+        while (current) {
+            if (current->data == s) {  // If the current node contains the word to delete
+                if (prev)
+                    prev->next = current->next; // Update the next pointer of the previous node
+                else
+                    head = current->next;   // Update the head if the first node is the one to delete
+                delete current; // Delete the current node
+                break;  // Exit the loop since all occurrences are deleted
+            }
+            prev = current; // Update the previous node
+            current = current->next;    // Move to the next node
+        }
+    }
+};
+
+// Main function to test the List class
+int main() {
+    List L;
+    // Sample vector of words
+    vector<string> v = {"chicago", "is", "located", "in", "northeastern", "illinois",
+                        "on", "the", "southwestern", "shores", "of", "freshwater", "lake",
+                        "michigan", "and", "it", "is", "the", "principal", "city", "in",
+                        "the", "chicago", "metropolitan", "area", "situated", "in", "both",
+                        "the", "midwestern", "united", "states", "and", "the", "great",
+                        "lakes", "region"};
+    L.generate_list(v); // Generate the list from the vector of words
+    L.print(); // Print the list
+    cout << "-------------------" << endl;
+    cout << "Longest string: " << L.longest_string() << endl; // Print the longest string in the list
+    cout << "Average word length: " << L.average_word_length() << endl; // Print the average word length
+    cout << "Built sentence: " << L.build_sentence() << endl; // Print the built sentence
+    cout << "-------------------" << endl;
+    L.prioritize_list(); // Prioritize the list
+    L.print(); // Print the prioritized list
+    cout << "-------------------" << endl;
+    L.delete_string("the"); // Delete all occurrences of the word "the" from the list
+    L.print(); // Print the updated list
+    cout << "-------------------" << endl;
+    return 0;
+}
