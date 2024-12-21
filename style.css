@@ -86,7 +86,7 @@ p {
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100vh;
+  height: 70vh;
   text-align: center;
   background-color: black;
   border: 2px solid #EFCCFF;
@@ -94,8 +94,9 @@ p {
   margin: 450px auto;
   margin-bottom: 100px;
   box-sizing: border-box;
-  margin-top: 460px;
+  margin-top: 490px;
 }
+
 .box p {
   line-height: 0.9;
   letter-spacing: -1px;
@@ -138,13 +139,13 @@ p {
 .backbox1{
   background-color: black;
   border: 2px solid #EFCCFF;
-  left:780px;
+  left:930px;
 }
 .topbox1 { 
   background-color: black;
   border: 2px solid #EFCCFF;
   top: -20px;
-  left: 800px; 
+  left: 950px; 
 }
 .topbox1 p {
   margin-top: 40px;
@@ -160,7 +161,7 @@ p {
   background-color: #EFCCFF;
   border: 2px solid #EFCCFF;
   top: -20px;
-  left: 800px; 
+  left: 950px; 
   height: 30px;
 }
 .headerbox1 p {
@@ -177,6 +178,10 @@ p {
   border: 5px solid #EFCCFF;
   padding: 5px;
   box-sizing:border-box ;
+}
+
+.box3 {
+  margin-right: 250px;
 }
 
 .box3 p {
@@ -223,6 +228,7 @@ p {
   display:flex;
   position: relative;
 }
+
 .intro1 {
   width: 600px;
   height: 450px;
@@ -244,6 +250,7 @@ p {
   left: 660px;
   right: 800px; 
 }
+
 .topbox2 p {
   margin-top: 45px;
   font-family: 'Silkscreen';
@@ -272,13 +279,12 @@ p {
   width: 360px;
   height: auto;
   margin-top: 20px;
-  margin-left: 900px;
+  margin-left: 65%;
   border-radius: 30px;
   border: 5px solid #EFCCFF;
   padding: 5px;
   box-sizing:border-box ;
 }
-
 
 .box2 p {
   margin-top: 30px;
