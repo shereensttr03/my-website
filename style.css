@@ -434,6 +434,31 @@ resume-button ul {
   transform: rotateY(180deg);  
 }
 
+.flip-box5 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d; 
+  transition: transform 1.0s;  
+
+}
+.flip-container:hover .flip-box5 {
+  transform: rotateY(180deg);  
+}
+
+.flip-box6 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d; 
+  transition: transform 1.0s;  
+
+}
+.flip-container:hover .flip-box6 {
+  transform: rotateY(180deg);  
+}
+
+
 .flip-box2 {
   position: relative;
   width: 100%;
