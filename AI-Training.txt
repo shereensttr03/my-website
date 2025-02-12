@@ -1,0 +1,65 @@
+#Shereen Sattar
+#ssatt2@uic.edu
+
+#I hereby attest that I have adhered to the rules for quizzes and projects as
+#well as UIC’s Academic Integrity standards.
+#Signed: [[Shereen Sattar]]
+
+
+
+import random
+
+class AIQuestions:
+    #initialize the probabilty (50%), success, and fail rate.
+    def __init__(self):
+        self.probability = [0.5] * 20
+        self.success = [0] * 20
+        self.fail = [0] * 20
+
+    def train(self, t_num, t_quality):
+        #for each questio in range of 1-20
+        for _ in range(t_num):
+            #randomly pick a question 1-20
+            n = random.randint(0, 19)
+            #pick a random float from 0-1
+            random_float = random.random()
+
+            if random_float < t_quality:
+                #if training was successful
+                #add 2
+                self.probability[n] += 2 ** self.success[n]
+                self.success[n] += 1
+                self.fail[n] = 0
+            else:
+                #if training failed
+                self.probability[n] -= 2 ** self.fail[n]
+                self.fail[n] += 1
+                self.success[n] = 0
+
+                #will reset x to 1% for when the training is successful after fail
+            if self.success[n] == 1 and self.fail[n] == 1:
+                self.probability[n] = max(0.01, self.probability[n])
+
+    def test(self):
+        correct_answers = 0
+
+        for p in self.probability:
+            if random.random() < p:
+                correct_answers += 1
+        #should return 1 if the AI passed (at least 15-20 right questions)
+        if correct_answers >= 15:
+            return 1
+        #should return 0 if else
+        else:
+            return 0
+
+def pass_rate(t_num, t_quality):
+    passes = 0
+    #uses functions "train" and "test" to train and test AI 1000 times
+    for _ in range(1000):
+        ai = AIQuestions()
+        ai.train(t_num, t_quality)
+        passes += ai.test()
+
+    pass_rate_percentage = (passes / 1000) * 100
+    print(f"The pass rate for this AI is {pass_rate_percentage:.1f}%")
