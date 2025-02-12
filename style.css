@@ -94,6 +94,7 @@ p {
   margin: 450px auto;
   margin-bottom: 100px;
   box-sizing: border-box;
+<<<<<<< HEAD
   margin-top: 490px;
 }
 @media (max-width: 768px) {
@@ -101,6 +102,11 @@ p {
     width:100%;
   }
 }
+=======
+  margin-top: 510px;
+}
+
+>>>>>>> 01ade9c920678eba08d9099c166dbedb0b7ac6e8
 .box p {
   line-height: 0.9;
   letter-spacing: -1px;
@@ -232,6 +238,10 @@ p {
   display:flex;
   position: relative;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 01ade9c920678eba08d9099c166dbedb0b7ac6e8
 .intro1 {
   width: 600px;
   height: 450px;
@@ -253,6 +263,10 @@ p {
   left: 660px;
   right: 800px; 
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 01ade9c920678eba08d9099c166dbedb0b7ac6e8
 .topbox2 p {
   margin-top: 45px;
   font-family: 'Silkscreen';
@@ -434,6 +448,7 @@ resume-button ul {
   transform: rotateY(180deg);  
 }
 
+<<<<<<< HEAD
 .flip-box5 {
   position: relative;
   width: 100%;
@@ -459,6 +474,8 @@ resume-button ul {
 }
 
 
+=======
+>>>>>>> 01ade9c920678eba08d9099c166dbedb0b7ac6e8
 .flip-box2 {
   position: relative;
   width: 100%;
@@ -535,8 +552,11 @@ resume-button ul {
 
 
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 01ade9c920678eba08d9099c166dbedb0b7ac6e8
 /*Experience*/
 .click-box p{
   margin-left: 50px;
